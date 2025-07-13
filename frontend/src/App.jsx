@@ -11,7 +11,9 @@ import "highlight.js/styles/github-dark.css";
 
 const App = () => {
 
-  const[code , setCode]= useState(``)
+  const[code , setCode]= useState(`function sum() {
+    return 1 + 1 ;
+    }`)
   useEffect(() => {
     prism.highlightAll()
   } , [])
@@ -34,8 +36,9 @@ const App = () => {
   return (
     <>
     <div className="bg-amber-50 flex justify-items-normal gap-1 justify-evenly">
-      <div className="p-2 w-6/12 h-screen bg-black border-2 rounded-2xl">
-       <div className='h-[92%] w-full text-white overflow-auto'>
+      <div className="p-2 w-[50%] h-screen bg-black border-2 rounded-2xl flex flex-col overflow-auto">
+      <div className="text-green-400 font-mono text-sm mb-2">/* Paste your code here - Below is sample code (Clear the screen first) */</div>
+       <div className='h-[88%] w-full text-white overflow-auto scrollbar-hide' style={{ overflowX: 'auto' }}>
         <Editor
               value={code}
               onValueChange={code => setCode(code)}
@@ -44,10 +47,10 @@ const App = () => {
               style={{
                 fontFamily: '"Fira code", "Fira Mono", monospace',
                 fontSize: 16,
-                border: "1px solid #ddd",
                 borderRadius: "5px",
-                height: "100%",
-                width: "100%"
+                
+                overflow: "auto",
+                whiteSpace: 'pre'
               }}
             />
        </div>
@@ -62,7 +65,8 @@ const App = () => {
     </button>
   </div>
       </div>
-      <div className="p-2 w-6/12 h-screen bg-gray-400 border-2 rounded-2xl overflow-auto font-bold">
+      <div className="p-2 w-[50%] h-screen bg-neutral-500 border-2 rounded-2xl overflow-auto font-bold flex flex-col">
+       <div className="text-black font-mono text-sm mb-2">/* AI Review Below (Improvement and Fixes available) */</div>
       <Markdown rehypePlugins={[rehypeHighlight]}>{review}</Markdown>
       </div>
     </div>

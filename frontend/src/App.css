@@ -5,3 +5,12 @@
   height: 100%;
   width: 100%;
 }
+
+/* App.css or global styles */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
