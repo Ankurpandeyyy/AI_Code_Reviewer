@@ -9,6 +9,7 @@ import Markdown from 'react-markdown'
 import rehypeHighlight from 'rehype-highlight'
 import "highlight.js/styles/github-dark.css";
 
+
 const App = () => {
 
   const[code , setCode]= useState(`function sum() {
@@ -18,8 +19,11 @@ const App = () => {
     prism.highlightAll()
   } , [])
 
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
   async function ReviewCode(){
-     const response = await axios.post('http://localhost:3000/ai/get-review' , {code})
+    // const response = await axios.post('http://localhost:3000/ai/get-review' , {code})
+
+    const response = await axios.post(`${BASE_URL}/ai/get-review`, { code });
 
      setreview(response.data)
   }
